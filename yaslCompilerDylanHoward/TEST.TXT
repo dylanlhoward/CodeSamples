@@ -1,0 +1,25 @@
+program demo;
+	boolean madness;
+	int x;
+	
+	function blast(int &n);
+		
+	begin
+		cout << 'Original x: ' << n << endl;
+		n = n - 3
+	end;
+
+begin
+	x = 5;
+	blast(x);
+	cout << 'The new value of x is ' << x << endl;
+	blast(x);
+	cout << 'And again: ' << x << endl;
+	madness = false;
+	if madness then
+		cout << 'This is madness' << endl
+	else
+		cout << 'THIS IS SPARTA!!!' << endl;
+	cin
+	
+end.

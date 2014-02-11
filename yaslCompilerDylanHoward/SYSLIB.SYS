@@ -1,0 +1,30 @@
+: The system library
+
+: This procedure prints a string to the screen
+
+$PR_STR MOVW    R0      @SP
+	ADDW    #4      SP
+	MOVW    @AP     R0      :Move out the argument
+$_SYS1_ CMPB    #0      @R0     :Check if it is a NULL
+	BEQ     $_SYS2_
+	OUTB    @R0
+	ADDW    #1      R0
+	JMP     $_SYS1_
+$_SYS2_ SUBW    #4      SP
+	MOVW    @SP     R0
+	RET
+
+: The procedure reads a string from the keyboard
+
+$RD_STR MOVW    R0      @SP     :Protect R0
+	ADDW    #4      SP      
+	MOVW    @AP     R0      :Move out the argument
+	INB     @R0
+$_SYS3_ CMPB    #0      @R0     :Check if it is a NULL
+	BEQ     $_SYS4_
+	ADDW    #1      R0
+	INB     @R0
+	JMP     $_SYS3_
+$_SYS4_ SUBW    #4      SP      :Restore R0
+	MOVW    @SP     R0
+	RET

@@ -1,0 +1,15 @@
+:ex1.pal
+:This is a comment
+:Pali is NOT case sensitive
+:Whitespace can be used freely
+
+
+
+$Num1  #4                          :reserve 4 bytes for variable $Num1
+$Num2  #4
+
+$main  inw   $num1                 :inw stands for "input word"
+             inw    $num2
+             addw   $num1  $num2   : $num2 = $num1 + $num2
+             outw   $num2
+             end
